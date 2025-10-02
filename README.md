@@ -232,4 +232,4 @@ MIT License - Sinta-se livre para usar este projeto!
 
 ## 👨‍💻 Desenvolvedor
 
-Desenvolvido com ❤️ usando Flask + Gemini AI para automação inteligente de e-mails corporativos.
+Desenvolvido sem ❤️ usando Flask + Gemini AI para automação inteligente de e-mails corporativos (a IA vai roubar meu emprego).
