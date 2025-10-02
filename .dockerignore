@@ -29,7 +29,6 @@ uploads/*
 # Docs
 README.md
 BOAS_PRATICAS.md
-exemplo_emails.txt
 
 # Scripts locais
 run.sh
