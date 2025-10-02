@@ -2,6 +2,8 @@
 
 Sistema inteligente para classificação e geração de respostas automáticas para e-mails corporativos do setor financeiro, utilizando IA generativa.
 
+Acesse aqui: https://projeto-autou-16087676324.europe-west1.run.app/
+
 ## 🎯 Objetivo
 
 Automatizar o processo de triagem de e-mails em empresas financeiras, identificando mensagens que requerem atenção imediata e gerando respostas automáticas quando apropriado.
@@ -33,49 +35,6 @@ Automatizar o processo de triagem de e-mails em empresas financeiras, identifica
 - ✅ Histórico de e-mails analisados
 - ✅ Estatísticas de classificação
 
-## 🔧 Instalação e Configuração
-
-### Pré-requisitos
-- Python 3.8+
-- pip (gerenciador de pacotes Python)
-
-### Passo a Passo
-
-1. **Clone o repositório** (ou navegue até o diretório)
-```bash
-cd /home/gabriel-velasco/Documents/ProjetoAutoU2
-```
-
-2. **Crie e ative um ambiente virtual** (recomendado)
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou
-venv\Scripts\activate     # Windows
-```
-
-3. **Instale as dependências**
-```bash
-pip install -r requirements.txt
-```
-
-4. **Configure recursos do NLTK**
-```bash
-python setup_nltk.py
-```
-
-5. **Execute a aplicação**
-```bash
-python app.py
-# ou use o script de conveniência:
-./run.sh
-```
-
-6. **Acesse no navegador**
-```
-http://localhost:5000
-```
-
 ## 📝 Como Usar
 
 ### Análise de E-mail Único
@@ -100,44 +59,6 @@ http://localhost:5000
 - **Expandir e-mail**: Clique no card para ver detalhes completos
 - **Limpar histórico**: Clique em "Limpar Tudo"
 - **Persistência**: Os resultados são salvos automaticamente no navegador
-
-## 🌐 Deploy em Produção
-
-### Google Cloud Run (Recomendado)
-
-O projeto está pronto para deploy no Google Cloud Run. Siga o guia completo em [`DEPLOY_GUIDE.md`](DEPLOY_GUIDE.md).
-
-**Deploy rápido:**
-```bash
-# 1. Instalar Google Cloud SDK
-curl https://sdk.cloud.google.com | bash
-
-# 2. Configurar projeto
-gcloud config set project SEU_PROJECT_ID
-
-# 3. Fazer deploy
-./deploy.sh
-```
-
-Ou manualmente:
-```bash
-gcloud run deploy email-classifier \
-  --source . \
-  --platform managed \
-  --region us-central1 \
-  --allow-unauthenticated
-```
-
-**Custos**: ~$0.01 a $0.50/mês (dentro do free tier do GCP)
-
-### Outras Opções de Deploy
-- **Heroku**: `heroku create && git push heroku main`
-- **Railway**: Conectar repositório GitHub
-- **Render**: Deploy automático via Git
-- **AWS Elastic Beanstalk**: Deploy com Docker
-- **Azure App Service**: Deploy com Container
-
-📖 Guia completo: [DEPLOY_GUIDE.md](DEPLOY_GUIDE.md)
 
 ## 📂 Estrutura do Projeto
 
@@ -177,10 +98,10 @@ ProjetoAutoU2/
 ### Arquitetura
 - **MVC Adaptado**: Model-View-Controller adaptado para Flask
 - **Service Layer**: Separação da lógica de negócio
-- **Dependency Injection**: Injeção de dependências nos serviços
+- **Dependency Injection**: Injeção de dependências nos serviços (req.txt)
 
 ### Padrões de Projeto
-- **Singleton**: Configurações centralizadas (`Config`)
+- **Singleton**: Configs centralizadas (`Config` que guarda configs base da Gemini API)
 - **Service Layer**: Camada de serviços (`NLPService`, `GeminiService`)
 - **Factory Method**: Criação de handlers de arquivo
 - **Strategy Pattern**: Diferentes estratégias de processamento NLP
@@ -192,43 +113,14 @@ ProjetoAutoU2/
 - ✅ Comentários e docstrings
 - ✅ Tratamento de erros consistente
 
-## 🔐 Configuração da API
-
-A chave da API do Gemini está configurada em `config/settings.py`:
-
-```python
-GEMINI_API_KEY = "AIzaSyAzlQnmePYFIXnKuj3gy011Tfj4a_0uiOo"
-GEMINI_MODEL = "gemini-2.0-flash-exp"
-```
-
-> ⚠️ **Nota de Segurança**: Em produção, use variáveis de ambiente para armazenar chaves sensíveis.
-
 ## 🧪 Testes
 
 Um arquivo de exemplo está disponível em `exemplo_emails.txt` com diferentes tipos de e-mails para testar o sistema.
 
-## 🎨 Interface
-
-A interface foi desenvolvida com foco em:
-- **Usabilidade**: Intuitiva, sem necessidade de manual
-- **Clareza**: Propósito evidente desde o primeiro contato
-- **Organização Visual**: Design limpo e sem distrações
-- **Responsividade**: Funciona em diferentes tamanhos de tela
-- **Feedback Visual**: Animações e notificações claras
-
-## 🚀 Melhorias Futuras
+## �🚀 Melhorias Futuras
 
 - [ ] Integração com APIs de e-mail (Gmail, Outlook)
-- [ ] Dashboard de analytics
-- [ ] Exportação de relatórios
-- [ ] Suporte a mais idiomas
-- [ ] Treinamento de modelo customizado
-- [ ] Sistema de autenticação
-- [ ] Banco de dados para persistência
-
-## 📄 Licença
-
-MIT License - Sinta-se livre para usar este projeto!
+- [ ] Banco de dados para persistência...
 
 ## 👨‍💻 Desenvolvedor
 

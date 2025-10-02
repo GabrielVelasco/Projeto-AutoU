@@ -20,11 +20,21 @@ class Config:
     def _initialize(self):
         """Inicializa as configurações"""
         # API Configuration
-        self.GEMINI_API_KEY = "AIzaSyAzlQnmePYFIXnKuj3gy011Tfj4a_0uiOo"
-        self.GEMINI_MODEL = "gemini-2.0-flash-exp"
+        # OBRIGATÓRIO: Configure GEMINI_API_KEY como variável de ambiente
+        self.GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+        
+        if not self.GEMINI_API_KEY:
+            raise ValueError(
+                "⚠️  GEMINI_API_KEY não configurada!\n"
+                "Configure a variável de ambiente antes de iniciar:\n"
+                "- Cloud Run: gcloud run services update ... --set-env-vars GEMINI_API_KEY=sua_chave\n"
+                "- Local: export GEMINI_API_KEY=sua_chave"
+            )
+        
+        self.GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-2.0-flash-exp')
         
         # Flask Configuration
-        self.SECRET_KEY = os.urandom(24)
+        self.SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(24))
         self.MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
         
         # Upload Configuration

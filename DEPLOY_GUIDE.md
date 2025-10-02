@@ -73,7 +73,7 @@ export SERVICE_NAME=email-classifier
 # 2. Build da imagem Docker no Cloud Build
 gcloud builds submit --tag gcr.io/$PROJECT_ID/$SERVICE_NAME
 
-# 3. Deploy no Cloud Run
+# 3. Deploy no Cloud Run COM variáveis de ambiente
 gcloud run deploy $SERVICE_NAME \
   --image gcr.io/$PROJECT_ID/$SERVICE_NAME \
   --platform managed \
@@ -83,18 +83,21 @@ gcloud run deploy $SERVICE_NAME \
   --cpu 1 \
   --timeout 300 \
   --max-instances 10 \
-  --port 8080
+  --port 8080 \
+  --set-env-vars GEMINI_API_KEY=sua_chave_api_aqui
 ```
 
-### 3. Configurar Variáveis de Ambiente (Opcional)
+### 3. Configurar Variáveis de Ambiente (IMPORTANTE)
 
-Se quiser usar variáveis de ambiente para a chave da API:
+⚠️ **A API key DEVE ser configurada via variável de ambiente!**
 
 ```bash
-gcloud run services update email-classifier \
+gcloud run services update projeto-autou \
   --region us-central1 \
-  --set-env-vars GEMINI_API_KEY=AIzaSyAzlQnmePYFIXnKuj3gy011Tfj4a_0uiOo
+  --set-env-vars GEMINI_API_KEY=SUA_CHAVE_API_AQUI
 ```
+
+📖 Guia completo de configuração: [CONFIG_ENV_VARS.md](CONFIG_ENV_VARS.md)
 
 ### 4. Verificar Deploy
 
@@ -138,7 +141,7 @@ gcloud run services add-iam-policy-binding email-classifier \
 
 ```bash
 # Criar secret
-echo -n "AIzaSyAzlQnmePYFIXnKuj3gy011Tfj4a_0uiOo" | \
+echo -n "SUA_CHAVE_API_AQUI" | \
   gcloud secrets create gemini-api-key --data-file=-
 
 # Usar no Cloud Run
