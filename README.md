@@ -101,6 +101,44 @@ http://localhost:5000
 - **Limpar histórico**: Clique em "Limpar Tudo"
 - **Persistência**: Os resultados são salvos automaticamente no navegador
 
+## 🌐 Deploy em Produção
+
+### Google Cloud Run (Recomendado)
+
+O projeto está pronto para deploy no Google Cloud Run. Siga o guia completo em [`DEPLOY_GUIDE.md`](DEPLOY_GUIDE.md).
+
+**Deploy rápido:**
+```bash
+# 1. Instalar Google Cloud SDK
+curl https://sdk.cloud.google.com | bash
+
+# 2. Configurar projeto
+gcloud config set project SEU_PROJECT_ID
+
+# 3. Fazer deploy
+./deploy.sh
+```
+
+Ou manualmente:
+```bash
+gcloud run deploy email-classifier \
+  --source . \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated
+```
+
+**Custos**: ~$0.01 a $0.50/mês (dentro do free tier do GCP)
+
+### Outras Opções de Deploy
+- **Heroku**: `heroku create && git push heroku main`
+- **Railway**: Conectar repositório GitHub
+- **Render**: Deploy automático via Git
+- **AWS Elastic Beanstalk**: Deploy com Docker
+- **Azure App Service**: Deploy com Container
+
+📖 Guia completo: [DEPLOY_GUIDE.md](DEPLOY_GUIDE.md)
+
 ## 📂 Estrutura do Projeto
 
 ```

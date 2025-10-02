@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Uploads (criar vazio no container)
+uploads/*
+!uploads/.gitkeep
+
+# Docs
+README.md
+BOAS_PRATICAS.md
+exemplo_emails.txt
+
+# Scripts locais
+run.sh
+setup_nltk.py
